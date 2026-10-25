@@ -5,6 +5,7 @@ import {
   Hero,
   About,
   Services,
+  RecruitmentProcess,
   Projects,
   Features,
   Training,
@@ -56,6 +57,7 @@ export default function App() {
         <Hero onOpenVideo={(url) => setVideoUrl(url)} />
         <About />
         <Services />
+        <RecruitmentProcess />
         <Projects />
         <Features />
         <Training />

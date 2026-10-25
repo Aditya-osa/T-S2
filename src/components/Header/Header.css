@@ -1,234 +1,387 @@
 /* ==========================================================================
-   Header White Theme & T&S Logo Styles
+   T&S Consulting Group - Modern Dark Capsule Header (Reference Layout)
    ========================================================================== */
 
-/* Main Header Container - White Theme Guaranteed Sticky */
-header.header-one,
-header.header-one.header-white,
-header.header-one.header-relative {
-  position: sticky !important;
+:root {
+  --header-bg-dark: #08080A;
+  --header-capsule-bg: #141416;
+  --header-active-pill: #004D9C;
+  /* T&S Brand Blue - NO RED */
+  --header-primary-blue: #004D9C;
+  --header-white: #FFFFFF;
+}
+
+/* Fixed Header Container */
+header.orynex-header-container {
+  position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
-  background: rgba(255, 255, 255, 0.88) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid rgba(7, 20, 49, 0.08) !important;
-  box-shadow: 0 2px 18px rgba(7, 20, 49, 0.05) !important;
-  z-index: 1100 !important;
-  transition: box-shadow 0.25s ease, background 0.25s ease !important;
+  z-index: 1050 !important;
+  pointer-events: none !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* Scrolled / Sticky State */
-header.header-one.sticky,
-header.header-one.header-white.sticky,
-header.header--sticky.sticky {
-  position: sticky !important;
-  top: 0 !important;
-  background: rgba(255, 255, 255, 0.94) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border-bottom: 1px solid rgba(7, 20, 49, 0.08) !important;
-  box-shadow: 0 4px 25px rgba(7, 20, 49, 0.12) !important;
+/* Top Slogan Banner - Preserved */
+.header-top-slogan-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1052;
+  pointer-events: auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Header Wrapper */
-.header-one.header-white .header-wrapper-main {
-  min-height: 84px;
+.header-top-slogan {
+  position: relative;
+  background: #000000;
+  color: #FFFFFF;
+  padding: 5px 36px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  border-radius: 0 0 10px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: none;
+
+}
+
+.header-top-slogan span {
+  background: linear-gradient(90deg, #FFFFFF 0%, #DCE6FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Main Dark Header Bar */
+.orynex-header-bar {
+  width: 100%;
+
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 14px 48px;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+/* Sticky Scrolled State */
+header.orynex-header-container.is-sticky .header-top-slogan-wrapper {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+header.orynex-header-container.is-sticky .orynex-header-bar {
+
+  padding: 10px 48px;
+
+}
+
+.orynex-header-inner {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
 }
 
-/* Logo Area & Image */
-.header-one.header-white .logo-area {
+/* Left: Brand Logo */
+.orynex-logo-col {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
 }
 
-.header-one.header-white .header-logo-link {
+.orynex-logo-link {
   display: inline-flex;
   align-items: center;
+  gap: 12px;
   text-decoration: none;
-  padding: 4px 0;
 }
 
-.header-one.header-white .header-logo-img {
-  height: 52px;
-  max-height: 56px;
-  width: auto;
-  max-width: 180px;
-  object-fit: contain;
-  display: block;
-  /* Delicate drop-shadow ensures the white '&' between T and S pops with depth on white background */
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.22)) drop-shadow(0 0 1px rgba(0, 0, 0, 0.12));
-  transition: transform 0.25s ease, filter 0.25s ease;
-}
-
-.header-one.header-white .header-logo-link:hover .header-logo-img {
-  transform: scale(1.04);
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.26)) drop-shadow(0 0 1px rgba(0, 0, 0, 0.15));
-}
-
-/* Navigation Links (Dark on White) */
-.header-one.header-white .nav-area ul {
+.orynex-logo-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  padding: 4px;
   display: flex;
   align-items: center;
-  gap: 36px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  justify-content: center;
+
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
 }
 
-.header-one.header-white .nav-area ul li.main-nav {
+.orynex-logo-link:hover .orynex-logo-badge {
+  transform: scale(1.05);
+}
+
+.orynex-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.orynex-logo-text {
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  white-space: nowrap;
+}
+
+/* Center: Dark Capsule Navigation Pill */
+.orynex-nav-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+.orynex-nav-capsule {
+  display: inline-flex;
+  align-items: center;
+  background: var(--header-capsule-bg);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  padding: 6px 7px;
+  gap: 5px;
+
+}
+
+.orynex-nav-item {
+  color: #FFFFFF;
+  font-size: 14.5px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  white-space: nowrap;
+}
+
+.orynex-nav-item:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Active Pill Highlight - Brand Blue (#004D9C), NO RED */
+.orynex-nav-item.active {
+  background: var(--header-active-pill) !important;
+  color: #FFFFFF !important;
+  font-weight: 600;
+
+}
+
+.orynex-chevron {
+  stroke: currentColor;
+  transition: transform 0.25s ease;
+  opacity: 0.8;
+}
+
+.orynex-dropdown-wrapper:hover .orynex-chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menus with Dark Glassmorphism */
+.orynex-dropdown-wrapper {
   position: relative;
 }
 
-.header-one.header-white .nav-area ul li.main-nav > a {
-  color: #071431 !important;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 28px 0;
-  display: inline-block;
-  transition: color 0.25s ease;
+.orynex-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #141418;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+
+  padding: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1060;
+}
+
+.orynex-dropdown-wrapper:hover .orynex-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.service-dropdown {
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.orynex-dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
   text-decoration: none;
+  transition: background 0.2s ease;
 }
 
-.header-one.header-white .nav-area ul li.main-nav:hover > a {
-  color: var(--color-primary, #0072ce) !important;
+.orynex-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
-/* Dropdown Indicators (Chevron Arrows) */
-.header-one.header-white .nav-area ul li.has-dropdown::after,
-.header-one.header-white .nav-area ul li.has-dropdown.mega-menu > a::after {
-  color: #071431 !important;
-  transition: color 0.25s ease, transform 0.25s ease;
-}
-
-.header-one.header-white .nav-area ul li.has-dropdown:hover::after,
-.header-one.header-white .nav-area ul li.has-dropdown.mega-menu:hover > a::after {
-  color: var(--color-primary, #0072ce) !important;
-}
-
-/* Language Selector */
-.header-one.header-white .select-area.language {
+.dropdown-item-icon {
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.header-one.header-white .select-area.language .main-nav > a {
-  color: #071431 !important;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 8px 4px;
+.dropdown-item-icon img {
+  width: 26px;
+  height: 26px;
 }
 
-.header-one.header-white .select-area.language img {
-  filter: brightness(0) saturate(100%) !important;
-  opacity: 0.85;
-  width: 16px;
-  height: 16px;
-  margin-right: 6px;
-}
-
-.header-one.header-white .select-area.language .main-nav.project-a-after::after {
-  color: #071431 !important;
-}
-
-.header-one.header-white .select-area.language ul.submenu {
-  background: #ffffff !important;
-  border: 1px solid rgba(7, 20, 49, 0.08);
-  box-shadow: 0 10px 30px rgba(7, 20, 49, 0.12);
-  border-radius: 6px;
-  min-width: 90px;
-}
-
-.header-one.header-white .select-area.language ul.submenu li a {
-  color: #071431 !important;
-  padding: 8px 16px;
-  font-weight: 600;
+.orynex-dropdown-item h6 {
+  color: #FFFFFF;
   font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 3px;
+}
+
+.orynex-dropdown-item p {
+  color: #94A3B8;
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.pages-dropdown {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+}
+
+.orynex-dropdown-subitem {
+  color: #CBD5E1;
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.orynex-dropdown-subitem:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+/* Right: Actions */
+.orynex-action-col {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 0 0 auto;
+}
+
+/* Let's Talk Button - Pure White Pill */
+.orynex-talk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  color: #000000 !important;
+  font-size: 14.5px;
+  font-weight: 700;
+  padding: 10px 26px;
+  border-radius: 9999px;
+  text-decoration: none;
+
+  transition: all 0.25s ease;
+  border: none;
+  white-space: nowrap;
+}
+
+.orynex-talk-btn:hover {
+  background: #004D9C;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+
+}
+
+/* Circular Menu Toggle Button */
+.circle-grid-menu-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--header-capsule-bg);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.circle-grid-menu-btn:hover {
+  background: var(--header-active-pill);
+  border-color: var(--header-active-pill);
+  transform: rotate(90deg);
+}
+
+.circle-grid-menu-btn svg {
   display: block;
 }
 
-.header-one.header-white .select-area.language ul.submenu li a:hover {
-  color: var(--color-primary, #0072ce) !important;
-  background: rgba(0, 114, 206, 0.06);
-}
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
 
-/* CTA Button */
-.header-one.header-white .button-wrapper-flex {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.header-one.header-white .button-wrapper-flex .rts-btn.btn-primary {
-  padding: 12px 28px;
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 6px;
-}
-
-/* Mobile Hamburger Menu Toggle Button */
-.header-one.header-white .menu-btn-toggle {
-  display: none;
-  cursor: pointer;
-  padding: 9px 10px;
-  border: 1px solid rgba(7, 20, 49, 0.14) !important;
-  border-radius: 6px;
-  background: transparent;
-  transition: all 0.2s ease;
-  line-height: 0;
-}
-
-.header-one.header-white .menu-btn-toggle:hover {
-  background: rgba(7, 20, 49, 0.05);
-  border-color: rgba(7, 20, 49, 0.28) !important;
-}
-
-.header-one.header-white .menu-btn-toggle svg rect {
-  fill: #071431 !important;
-  transition: fill 0.2s ease;
-}
-
-.header-one.header-white .menu-btn-toggle:hover svg rect {
-  fill: var(--color-primary, #0072ce) !important;
-}
-
-@media only screen and (max-width: 1199px) {
-  .header-one.header-white .nav-area {
+@media only screen and (max-width: 1100px) {
+  .orynex-nav-col {
     display: none;
   }
 
-  .header-one.header-white .menu-btn-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  .orynex-header-bar {
+    padding: 10px 28px;
   }
 }
 
-/* Dropdown Menus and Mega Menus on White Header */
-.header-one.header-white .rts-mega-menu {
-  background: #ffffff !important;
-  border-top: 3px solid var(--color-primary, #0072ce);
-  box-shadow: 0 16px 40px rgba(7, 20, 49, 0.14) !important;
-  border-radius: 0 0 8px 8px !important;
-}
+@media only screen and (max-width: 767px) {
+  .header-top-slogan {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    padding: 4px 20px;
+  }
 
-.header-one.header-white ul.submenu {
-  background: #ffffff !important;
-  border-top: 3px solid var(--color-primary, #0072ce);
-  box-shadow: 0 12px 30px rgba(7, 20, 49, 0.12) !important;
-  border-radius: 0 0 6px 6px;
-}
+  .orynex-header-bar {
+    padding: 8px 16px;
+  }
 
-.header-one.header-white ul.submenu li a {
-  color: #071431 !important;
-}
+  .orynex-logo-text {
+    font-size: 16px;
+  }
 
-.header-one.header-white ul.submenu li a:hover {
-  color: var(--color-primary, #0072ce) !important;
-  padding-left: 5px;
+  .orynex-talk-btn {
+    display: none;
+  }
 }

@@ -1,0 +1,405 @@
+/* ==========================================================================
+   T&S Consulting Group - HR Consulting Section
+   Sticky-Image Parallax Split-Screen Layout (Matches About Us Architecture)
+   ========================================================================== */
+
+.hr-split-section {
+  --hr-primary: #0F62FE;
+  --hr-primary-hover: #0050E6;
+  --hr-heading: #050D20;
+  --hr-body: #4A4A4A;
+  --hr-desc: #666666;
+  --hr-border: #E8E8E8;
+  --hr-white: #FFFFFF;
+
+  position: relative;
+  width: 100%;
+  background: #FFFFFF;
+  overflow: visible; /* Must be visible so position: sticky is not clipped */
+  box-sizing: border-box;
+}
+
+.hr-split-section *,
+.hr-split-section *::before,
+.hr-split-section *::after {
+  box-sizing: border-box;
+}
+
+/* 40% Image / 60% Content Split Grid (Alternates with About Us) */
+.hr-split-grid {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  width: 100%;
+  position: relative;
+  align-items: stretch;
+}
+
+/* Left Image Panel (40% Column) */
+.hr-image-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Sticky Image Wrapper - Stays in viewport for full section height */
+.hr-sticky-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* Clips inner parallax image */
+  background: #EEF2F6;
+}
+
+.hr-sticky-image {
+  position: absolute;
+  top: -5%;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  will-change: transform;
+}
+
+/* Subtle Gradient Overlay */
+.hr-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 98, 254, 0.08) 0%,
+    transparent 20%,
+    transparent 80%,
+    rgba(5, 13, 32, 0.18) 100%
+  );
+  pointer-events: none;
+}
+
+/* Right Content Panel (60%) */
+.hr-content-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 130px 50px 140px 70px;
+  background: #FFFFFF;
+  position: relative;
+  z-index: 2;
+  min-height: 135vh; /* Provides generous scrollable track for sticky image */
+}
+
+.hr-content-wrapper {
+  width: 100%;
+  max-width: 650px;
+  margin-left: 30px;
+}
+
+/* Eyebrow */
+.hr-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.hr-eyebrow-accent {
+  display: inline-block;
+  width: 36px;
+  height: 2px;
+  background: var(--hr-primary);
+}
+
+.hr-eyebrow-text {
+  color: var(--hr-primary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* Main Heading */
+.hr-heading {
+  margin: 0 0 26px;
+  color: var(--hr-heading);
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+}
+
+/* Description */
+.hr-description {
+  margin: 0 0 40px;
+  color: var(--hr-body);
+  font-size: 16.5px;
+  line-height: 1.88;
+  font-weight: 400;
+  max-width: 600px;
+}
+
+/* Capabilities Grid (8 Key HR Deliverables) */
+.hr-capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+  margin-bottom: 48px;
+  padding: 26px 0;
+  border-top: 1px solid var(--hr-border);
+  border-bottom: 1px solid var(--hr-border);
+  width: 100%;
+}
+
+.hr-capability-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.hr-check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(15, 98, 254, 0.1);
+  color: var(--hr-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.hr-capability-text {
+  color: var(--hr-heading);
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Website Brand CTA Actions */
+.hr-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hr-actions .rts-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 34px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Primary Button (Solid Corporate Blue) */
+.hr-actions .rts-btn.btn-primary {
+  background: var(--hr-primary) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid var(--hr-primary) !important;
+}
+
+.hr-actions .rts-btn.btn-primary:hover {
+  background: var(--hr-primary-hover) !important;
+  border-color: var(--hr-primary-hover) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 98, 254, 0.3);
+}
+
+/* Secondary Button (Corporate Blue Outline with Visible Text) */
+.hr-actions .rts-btn.btn-border {
+  background: #FFFFFF !important;
+  color: var(--hr-primary) !important;
+  border: 1.5px solid var(--hr-primary) !important;
+}
+
+.hr-actions .rts-btn.btn-border:hover {
+  background: var(--hr-primary) !important;
+  border-color: var(--hr-primary) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 98, 254, 0.25);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .hr-content-wrapper {
+    max-width: 680px;
+    margin-left: 45px;
+  }
+
+  .hr-heading {
+    font-size: 56px;
+    letter-spacing: -1.8px;
+  }
+
+  .hr-description {
+    font-size: 17px;
+  }
+}
+
+/* Tablet Landscape (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .hr-split-grid {
+    grid-template-columns: 45% 55%;
+  }
+
+  .hr-content-panel {
+    padding: 100px 35px 100px 45px;
+  }
+
+  .hr-content-wrapper {
+    margin-left: 15px;
+  }
+
+  .hr-heading {
+    font-size: 42px;
+    letter-spacing: -1.2px;
+  }
+}
+
+/* Tablet Portrait (769px - 991px) */
+@media (max-width: 991px) and (min-width: 769px) {
+  .hr-split-grid {
+    grid-template-columns: 45% 55%;
+  }
+
+  .hr-content-panel {
+    padding: 85px 25px 85px 35px;
+    min-height: 110vh;
+  }
+
+  .hr-content-wrapper {
+    margin-left: 0;
+  }
+
+  .hr-heading {
+    font-size: 38px;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .hr-description {
+    font-size: 15px;
+    line-height: 1.78;
+    margin-bottom: 30px;
+  }
+
+  .hr-capabilities-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+}
+
+/* Mobile Devices (Stacked Layout, Sticky Disabled) */
+@media (max-width: 768px) {
+  .hr-split-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hr-content-panel {
+    padding: 75px 24px 60px;
+    min-height: auto;
+    justify-content: flex-start;
+    order: 1; /* Content first on mobile */
+  }
+
+  .hr-content-wrapper {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .hr-eyebrow {
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .hr-eyebrow-accent {
+    width: 26px;
+  }
+
+  .hr-eyebrow-text {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .hr-heading {
+    font-size: 34px;
+    letter-spacing: -0.8px;
+    line-height: 1.22;
+    margin-bottom: 18px;
+  }
+
+  .hr-description {
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
+  .hr-capabilities-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 34px;
+    padding: 20px 0;
+  }
+
+  .hr-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+  }
+
+  .hr-actions .rts-btn {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hr-image-panel {
+    height: 380px;
+    min-height: 380px;
+    order: 2;
+  }
+
+  /* Disable sticky and reset height on mobile */
+  .hr-sticky-wrapper {
+    position: relative !important;
+    top: auto !important;
+    height: 100% !important;
+  }
+
+  .hr-sticky-image {
+    top: 0 !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .hr-sticky-image {
+    top: 0 !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,408 @@
+/* ==========================================================================
+   T&S Consulting Group - About Us Section
+   Khaitan & Co Inspired Sticky-Image Split-Screen Layout
+   ========================================================================== */
+
+.kh-about-split-section {
+  --kh-primary: #0F62FE;
+  --kh-primary-hover: #0050E6;
+  --kh-navy: #122840;
+  --kh-heading: #050D20;
+  --kh-body: #4A4A4A;
+  --kh-desc: #666666;
+  --kh-border: #E8E8E8;
+  --kh-white: #FFFFFF;
+
+  position: relative;
+  width: 100%;
+  background: #FFFFFF;
+  overflow: visible; /* Must be visible so position: sticky is not clipped */
+  box-sizing: border-box;
+}
+
+.kh-about-split-section *,
+.kh-about-split-section *::before,
+.kh-about-split-section *::after {
+  box-sizing: border-box;
+}
+
+/* 60% Content / 40% Image Split Grid */
+.kh-about-split-grid {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  width: 100%;
+  position: relative;
+  align-items: stretch;
+}
+
+/* Left Content Panel (60%) */
+.kh-about-content-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 130px 70px 140px 50px;
+  background: #FFFFFF;
+  position: relative;
+  z-index: 2;
+  min-height: 135vh; /* Provides generous scrollable track for sticky image */
+}
+
+.kh-about-content-wrapper {
+  width: 100%;
+  max-width: 640px;
+  margin-right: 30px;
+}
+
+/* Eyebrow */
+.kh-about-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.kh-about-eyebrow-accent {
+  display: inline-block;
+  width: 36px;
+  height: 2px;
+  background: var(--kh-primary);
+}
+
+.kh-about-eyebrow-text {
+  color: var(--kh-primary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* Main Heading */
+.kh-about-heading {
+  margin: 0 0 28px;
+  color: var(--kh-heading);
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.6px;
+}
+
+/* Description */
+.kh-about-description {
+  margin: 0 0 46px;
+  color: var(--kh-body);
+  font-size: 16.5px;
+  line-height: 1.88;
+  font-weight: 400;
+  max-width: 580px;
+}
+
+/* Editorial Strategic Pillars */
+.kh-about-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 52px;
+  padding-top: 26px;
+  border-top: 1px solid var(--kh-border);
+  border-bottom: 1px solid var(--kh-border);
+  padding-bottom: 28px;
+}
+
+.kh-pillar-item {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.kh-pillar-num {
+  color: var(--kh-primary);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  flex-shrink: 0;
+}
+
+.kh-pillar-title {
+  color: var(--kh-heading);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  line-height: 1.35;
+}
+
+.kh-pillar-desc {
+  color: var(--kh-desc);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Website Brand CTA Actions */
+.kh-about-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.kh-about-actions .rts-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 34px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Primary Button (Solid Corporate Blue) */
+.kh-about-actions .rts-btn.btn-primary {
+  background: var(--kh-primary) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid var(--kh-primary) !important;
+}
+
+.kh-about-actions .rts-btn.btn-primary:hover {
+  background: var(--kh-primary-hover) !important;
+  border-color: var(--kh-primary-hover) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 98, 254, 0.3);
+}
+
+/* Secondary Button (Corporate Blue Outline with Visible Text) */
+.kh-about-actions .rts-btn.btn-border {
+  background: #FFFFFF !important;
+  color: var(--kh-primary) !important;
+  border: 1.5px solid var(--kh-primary) !important;
+}
+
+.kh-about-actions .rts-btn.btn-border:hover {
+  background: var(--kh-primary) !important;
+  border-color: var(--kh-primary) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 98, 254, 0.25);
+}
+
+/* Right Image Panel (40% Column) */
+.kh-about-image-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Sticky Image Wrapper - Stays in viewport for full section height */
+.kh-about-sticky-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* Clips inner parallax image */
+  background: #EEF2F6;
+}
+
+.kh-about-image {
+  position: absolute;
+  top: -5%;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  will-change: transform;
+}
+
+/* Subtle Gradient Overlay */
+.kh-about-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 40, 64, 0.1) 0%,
+    transparent 20%,
+    transparent 80%,
+    rgba(18, 40, 64, 0.16) 100%
+  );
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .kh-about-content-wrapper {
+    max-width: 680px;
+    margin-right: 50px;
+  }
+
+  .kh-about-heading {
+    font-size: 58px;
+    letter-spacing: -2px;
+  }
+
+  .kh-about-description {
+    font-size: 17.5px;
+    max-width: 600px;
+  }
+}
+
+/* Tablet Landscape (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .kh-about-split-grid {
+    grid-template-columns: 55% 45%;
+  }
+
+  .kh-about-content-panel {
+    padding: 100px 45px 100px 35px;
+  }
+
+  .kh-about-heading {
+    font-size: 42px;
+    letter-spacing: -1.2px;
+  }
+}
+
+/* Tablet Portrait (769px - 991px) */
+@media (max-width: 991px) and (min-width: 769px) {
+  .kh-about-split-grid {
+    grid-template-columns: 55% 45%;
+  }
+
+  .kh-about-content-panel {
+    padding: 85px 35px 85px 25px;
+    min-height: 110vh;
+  }
+
+  .kh-about-content-wrapper {
+    margin-right: 0;
+  }
+
+  .kh-about-heading {
+    font-size: 38px;
+    letter-spacing: -1px;
+    margin-bottom: 22px;
+  }
+
+  .kh-about-description {
+    font-size: 15px;
+    line-height: 1.78;
+    margin-bottom: 34px;
+  }
+
+  .kh-btn-outline {
+    padding: 13px 22px;
+    font-size: 12px;
+  }
+}
+
+/* Mobile Devices (Stacked Layout, Sticky Disabled) */
+@media (max-width: 768px) {
+  .kh-about-split-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .kh-about-content-panel {
+    padding: 75px 24px 60px;
+    min-height: auto;
+    justify-content: flex-start;
+  }
+
+  .kh-about-content-wrapper {
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  .kh-about-eyebrow {
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .kh-about-eyebrow-accent {
+    width: 26px;
+  }
+
+  .kh-about-eyebrow-text {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .kh-about-heading {
+    font-size: 34px;
+    letter-spacing: -0.8px;
+    line-height: 1.22;
+    margin-bottom: 20px;
+  }
+
+  .kh-about-description {
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  .kh-about-pillars {
+    gap: 18px;
+    margin-bottom: 38px;
+    padding-top: 20px;
+    padding-bottom: 22px;
+  }
+
+  .kh-pillar-title {
+    font-size: 15px;
+  }
+
+  .kh-about-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+  }
+
+  .kh-about-actions .rts-btn {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .kh-about-image-panel {
+    height: 380px;
+    min-height: 380px;
+    order: 2;
+  }
+
+  /* Disable sticky and reset height on mobile */
+  .kh-about-sticky-wrapper {
+    position: relative !important;
+    top: auto !important;
+    height: 100% !important;
+  }
+
+  .kh-about-image {
+    top: 0 !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .kh-about-image {
+    top: 0 !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+}

@@ -1,35 +1,91 @@
+import { HoverTransition } from '@/components/ui/hover-transition'
 import './VisionMission.css'
+
+function DefaultExpertiseCard({ item }) {
+  return (
+    <article className="consulting-card-default has-photo">
+      <img src={item.img} alt={item.name} className="consulting-card-bg-img" loading="lazy" />
+      <div className="consulting-card-overlay" aria-hidden="true" />
+      <div className="consulting-card-info">
+        <h3 className="consulting-card-title">{item.name}</h3>
+        <span className="consulting-card-designation">{item.role}</span>
+      </div>
+    </article>
+  )
+}
+
+function HoverExpertiseCard({ item }) {
+  return (
+    <article className="consulting-card-hover">
+      <div>
+        <i className="fa-solid fa-quote-left consulting-card-hover-quote-icon" aria-hidden="true"></i>
+        <p className="consulting-card-hover-desc">
+          {item.hoverDesc}
+        </p>
+      </div>
+      <div className="consulting-card-hover-footer">
+        <div className="consulting-card-hover-author">
+          <img src={item.img} alt={item.name} className="consulting-hover-avatar" loading="lazy" />
+          <div>
+            <p className="consulting-card-hover-name">{item.name}</p>
+            <p className="consulting-card-hover-role">
+              {item.role}
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+  )
+}
 
 export default function Team() {
   const practiceAreas = [
     {
-      name: 'Talent Acquisition Team',
+      name: 'Rahul Singh',
       role: 'Recruitment & Executive Search',
+      initials: 'TA',
+      desc: 'Connecting organizations with proven leadership talent and specialized professionals.',
+      hoverDesc: 'Specialized executive sourcing and targeted recruitment tailored to your exact leadership profile.',
       img: '/assets/images/team/01.webp',
     },
     {
-      name: 'HR Advisory Practice',
+      name: 'Aditya Sahu',
       role: 'Systems, Policy & Compliance',
+      initials: 'HR',
+      desc: 'Building scalable HR infrastructure, governance frameworks, and performance systems.',
+      hoverDesc: 'Optimizing people operations, statutory compliance, employee handbooks, and workplace culture.',
       img: '/assets/images/team/02.webp',
     },
     {
-      name: 'Corporate Training Group',
+      name: 'Virat Sharma',
       role: 'Learning & Leadership Development',
+      initials: 'LD',
+      desc: 'Empowering teams with customized corporate training, manager toolkits, and leadership skill.',
+      hoverDesc: 'Hands-on capability building that transforms workplace performance and aligns team synergy.',
       img: '/assets/images/team/03.webp',
     },
     {
-      name: 'Performance Consultants',
+      name: 'Rohit Khapra',
       role: 'KRA, KPI & Appraisal Design',
+      initials: 'PC',
+      desc: 'Designing outcome-driven metric systems and structured review cadences that boost productivity.',
+      hoverDesc: 'Clear accountability frameworks and appraisal cycles directly linked to business objectives.',
       img: '/assets/images/team/04.webp',
     },
     {
-      name: 'Manpower Strategists',
+      name: 'Vikrant Mehra',
       role: 'Workforce Planning & Induction',
+      initials: 'MS',
+      desc: 'Aligning headcount forecasting, job profiling, and seamless onboarding experiences.',
+      hoverDesc: 'Strategic workforce modeling and onboarding workflows to accelerate new hire time-to-productivity.',
       img: '/assets/images/team/02.webp',
     },
     {
-      name: 'Client Account Partners',
+      name: 'Rahul Gupta',
       role: 'Dedicated Search & Support',
+      initials: 'CP',
+      desc: 'Providing responsive end-to-end partner management with transparent SLA fulfillment.',
+      hoverDesc: 'Dedicated single point of contact ensuring fast turnaround and high-caliber placement accuracy.',
       img: '/assets/images/team/03.webp',
     },
   ]
@@ -174,15 +230,14 @@ export default function Team() {
                 <div className="swiper-wrapper">
                   {practiceAreas.map((m, i) => (
                     <div className="swiper-slide" key={i}>
-                      <div className="single-team-style-one">
-                        <div className="thumbnail">
-                          <img src={m.img} alt="team" />
-                        </div>
-                        <div className="inner-content">
-                          <h5 className="title">{m.name}</h5>
-                          <span className="designation">{m.role}</span>
-                        </div>
-                      </div>
+                      <HoverTransition
+                        effect="wipe"
+                        direction="right"
+                        duration={0.72}
+                        defaultComponent={<DefaultExpertiseCard item={m} />}
+                        hoverComponent={<HoverExpertiseCard item={m} />}
+                        className="w-full max-w-sm rounded-3xl"
+                      />
                     </div>
                   ))}
                 </div>

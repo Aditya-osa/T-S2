@@ -1,0 +1,248 @@
+/* ==========================================================================
+   HoverTransition Component (@componentry/hover-transition implementation)
+   ========================================================================== */
+
+.hover-transition-root {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  box-sizing: border-box;
+}
+
+.hover-transition-root *,
+.hover-transition-root *::before,
+.hover-transition-root *::after {
+  box-sizing: border-box;
+}
+
+.hover-transition-layer {
+  width: 100%;
+  height: 100%;
+}
+
+.hover-transition-layer.default-layer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.hover-transition-layer.hover-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  will-change: clip-path;
+  transition: clip-path var(--hover-duration, 0.72s) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Direction clip-paths */
+.hover-transition-layer.hover-layer.dir-right {
+  clip-path: inset(0 100% 0 0);
+}
+
+.hover-transition-layer.hover-layer.dir-left {
+  clip-path: inset(0 0 0 100%);
+}
+
+.hover-transition-layer.hover-layer.dir-bottom {
+  clip-path: inset(0 0 100% 0);
+}
+
+.hover-transition-layer.hover-layer.dir-top {
+  clip-path: inset(100% 0 0 0);
+}
+
+/* Hover trigger state */
+.hover-transition-root:hover .hover-transition-layer.hover-layer,
+.hover-transition-root.hover-active .hover-transition-layer.hover-layer {
+  clip-path: inset(0 0 0 0);
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+/* ==========================================================================
+   Consulting Expertise Card Styles (Brand Blue & White, No Yellow)
+   ========================================================================== */
+
+.hover-transition-root {
+  height: 380px;
+  min-height: 380px;
+  border-radius: 20px;
+}
+
+.consulting-card-default {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 380px;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background-color: #0b1526;
+  padding: 22px 20px;
+  color: #ffffff;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.consulting-card-default.has-photo {
+  background-color: #0c1524;
+}
+
+.consulting-card-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 0;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-transition-root:hover .consulting-card-bg-img {
+  transform: scale(1.05);
+}
+
+.consulting-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(4, 15, 33, 0.45) 60%,
+    rgba(3, 12, 28, 0.85) 80%,
+    rgba(2, 9, 22, 0.98) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.consulting-card-info {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.consulting-card-title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.consulting-card-designation {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Hover Card: Brand Blue & White (NO YELLOW) */
+.consulting-card-hover {
+  display: flex;
+  height: 100%;
+  min-height: 380px;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(155deg, #004D9C 0%, #003366 50%, #002244 100%); /* Brand Blue & Navy */
+  padding: 24px 20px;
+  color: #ffffff;
+  border-radius: 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.consulting-card-hover-quote-icon {
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.consulting-card-hover-desc {
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.consulting-card-hover-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.consulting-card-hover-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.consulting-hover-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.consulting-card-hover-name {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 2px;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.consulting-card-hover-role {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Tailwind Compatibility Utility Classes */
+.aspect-\[4\/5\] {
+  aspect-ratio: 4 / 5;
+}
+
+.rounded-3xl {
+  border-radius: 24px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.max-w-sm {
+  max-width: 384px;
+}
+

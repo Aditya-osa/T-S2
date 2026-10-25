@@ -5,153 +5,158 @@ import './Header.css'
 
 export default function Header({ onOpenSidebar }) {
   const [isSticky, setIsSticky] = useState(false)
-  const [lang, setLang] = useState('EN')
+  const [activeNav, setActiveNav] = useState('#home')
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 15)
+      setIsSticky(window.scrollY > 20)
     }
 
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <header className={`header-one header-relative header-white header--sticky ${isSticky ? 'sticky' : ''}`}>
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="header-wrapper-main">
-              <div className="logo-area">
-                <a href="#home" className="header-logo-link">
-                  <img src={logoImg || rawLogo} alt="T&S logo" className="header-logo-img" />
-                </a>
-              </div>
-              <div className="nav-area">
-                <ul>
-                  <li className="main-nav">
-                    <a href="#home">Home</a>
-                  </li>
-                  <li className="main-nav">
-                    <a href="#about">About Us</a>
-                  </li>
-                  <li className="main-nav has-dropdown mega-menu">
-                    <a href="#services">Services</a>
-                    <div className="rts-mega-menu service-mega-menu-style">
-                      <div className="wrapper">
-                        <div className="container">
-                          <div className="row g-5">
-                            <div className="col-lg-6">
-                              <ul className="mega-menu-item parent-nav">
-                                <li>
-                                  <a href="#services">
-                                    <div className="single-service-menu">
-                                      <div className="icon">
-                                        <img src="/assets/images/service/01.svg" alt="service" />
-                                      </div>
-                                      <div className="info">
-                                        <h5 className="title">Recruitment &amp; Talent Acquisition</h5>
-                                        <p className="details">
-                                          Connect with qualified professionals who match your business needs and culture.
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="#features">
-                                    <div className="single-service-menu">
-                                      <div className="icon">
-                                        <img src="/assets/images/service/02.svg" alt="service" />
-                                      </div>
-                                      <div className="info">
-                                        <h5 className="title">HR Consulting</h5>
-                                        <p className="details">
-                                          Build effective HR systems, workforce planning, and performance management.
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-lg-6">
-                              <ul className="mega-menu-item parent-nav">
-                                <li>
-                                  <a href="#training">
-                                    <div className="single-service-menu">
-                                      <div className="icon">
-                                        <img src="/assets/images/service/03.svg" alt="service" />
-                                      </div>
-                                      <div className="info">
-                                        <h5 className="title">Training &amp; Development</h5>
-                                        <p className="details">
-                                          Equip your employees with practical skills, leadership, and collaboration abilities.
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="#faq">
-                                    <div className="single-service-menu">
-                                      <div className="icon">
-                                        <img src="/assets/images/service/04.svg" alt="service" />
-                                      </div>
-                                      <div className="info">
-                                        <h5 className="title">Terms &amp; Replacement Policy</h5>
-                                        <p className="details">
-                                          Transparent 8.33% CTC fee structure and a 90-day replacement guarantee.
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="main-nav">
-                    <a href="#industries">Industries</a>
-                  </li>
-                  <li className="main-nav">
-                    <a href="#projects">Why Choose Us</a>
-                  </li>
-                  <li className="main-nav">
-                    <a href="#blog">Insights</a>
-                  </li>
-                  <li className="main-nav">
-                    <a href="#contact">Contact</a>
-                  </li>
-                </ul>
+    <header className={`orynex-header-container ${isSticky ? 'is-sticky' : ''}`}>
+      {/* Top Slogan Banner - Preserved */}
+      <div className="header-top-slogan-wrapper">
+        <div className="header-top-slogan">
+          <span>YOUR PEOPLE. OUR PRIORITY.</span>
+        </div>
+      </div>
+
+      {/* Main Reference Header Bar */}
+      <div className="orynex-header-bar">
+        <div className="orynex-header-inner">
+          {/* Left: Brand Logo & Name */}
+          <div className="orynex-logo-col">
+            <a href="#home" className="orynex-logo-link" onClick={() => setActiveNav('#home')}>
+              <div className="orynex-logo-badge">
+                <img src={logoImg || rawLogo} alt="T&S Consulting Group" className="orynex-logo-img" />
               </div>
 
-              <div className="button-wrapper-flex">
-                <a href="#contact" className="rts-btn btn-primary">
-                  Contact Us
-                </a>
-                <div
-                  className="menu-btn-toggle"
-                  onClick={onOpenSidebar}
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Toggle Menu"
+            </a>
+          </div>
+
+          {/* Center: Dark Capsule Navigation Pill */}
+          <nav className="orynex-nav-col">
+            <div className="orynex-nav-capsule">
+              <a
+                href="#home"
+                className={`orynex-nav-item ${activeNav === '#home' ? 'active' : ''}`}
+                onClick={() => setActiveNav('#home')}
+              >
+                Home
+              </a>
+              <a
+                href="#about"
+                className={`orynex-nav-item ${activeNav === '#about' ? 'active' : ''}`}
+                onClick={() => setActiveNav('#about')}
+              >
+                About
+              </a>
+
+              {/* Service Dropdown */}
+              <div className="orynex-dropdown-wrapper">
+                <a
+                  href="#services"
+                  className={`orynex-nav-item has-arrow ${activeNav === '#services' ? 'active' : ''}`}
+                  onClick={() => setActiveNav('#services')}
                 >
-                  <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect y="14" width="20" height="2" fill="#071431"></rect>
-                    <rect y="7" width="20" height="2" fill="#071431"></rect>
-                    <rect width="20" height="2" fill="#071431"></rect>
+                  <span>Service</span>
+                  <svg className="orynex-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
                   </svg>
+                </a>
+                <div className="orynex-dropdown-menu service-dropdown">
+                  <a href="#services" className="orynex-dropdown-item">
+                    <div className="dropdown-item-icon">
+                      <img src="/assets/images/service/01.svg" alt="icon" />
+                    </div>
+                    <div>
+                      <h6>Recruitment &amp; Talent Acquisition</h6>
+                      <p>Targeted hiring matching organizational culture</p>
+                    </div>
+                  </a>
+                  <a href="#features" className="orynex-dropdown-item">
+                    <div className="dropdown-item-icon">
+                      <img src="/assets/images/service/02.svg" alt="icon" />
+                    </div>
+                    <div>
+                      <h6>HR Consulting</h6>
+                      <p>Workforce planning, performance, and structure</p>
+                    </div>
+                  </a>
+                  <a href="#training" className="orynex-dropdown-item">
+                    <div className="dropdown-item-icon">
+                      <img src="/assets/images/service/03.svg" alt="icon" />
+                    </div>
+                    <div>
+                      <h6>Training &amp; Development</h6>
+                      <p>Custom capability and leadership building</p>
+                    </div>
+                  </a>
+                  <a href="#faq" className="orynex-dropdown-item">
+                    <div className="dropdown-item-icon">
+                      <img src="/assets/images/service/04.svg" alt="icon" />
+                    </div>
+                    <div>
+                      <h6>Terms &amp; Replacement Policy</h6>
+                      <p>8.33% fee &amp; 90-day guarantee</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <a
+                href="#blog"
+                className={`orynex-nav-item ${activeNav === '#blog' ? 'active' : ''}`}
+                onClick={() => setActiveNav('#blog')}
+              >
+                Blog
+              </a>
+
+              {/* Pages Dropdown */}
+              <div className="orynex-dropdown-wrapper">
+                <a
+                  href="#projects"
+                  className={`orynex-nav-item has-arrow ${activeNav === '#pages' ? 'active' : ''}`}
+                  onClick={() => setActiveNav('#pages')}
+                >
+                  <span>Pages</span>
+                  <svg className="orynex-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </a>
+                <div className="orynex-dropdown-menu pages-dropdown">
+                  <a href="#projects" className="orynex-dropdown-subitem">Why Choose Us</a>
+                  <a href="#industries" className="orynex-dropdown-subitem">Industries We Serve</a>
+                  <a href="#team" className="orynex-dropdown-subitem">Leadership &amp; Team</a>
+                  <a href="#faq" className="orynex-dropdown-subitem">Frequently Asked Questions</a>
                 </div>
               </div>
             </div>
+          </nav>
+
+          {/* Right: Let's Talk Button & Mobile Toggle */}
+          <div className="orynex-action-col">
+            <a href="#contact" className="orynex-talk-btn">
+              Let's Talk
+            </a>
+
+            <button
+              className="circle-grid-menu-btn"
+              onClick={onOpenSidebar}
+              aria-label="Toggle Menu"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2.5" y="2.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" strokeWidth="2" />
+                <rect x="12" y="2.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" strokeWidth="2" />
+                <rect x="2.5" y="12" width="5.5" height="5.5" rx="1.5" stroke="currentColor" strokeWidth="2" />
+                <rect x="12" y="12" width="5.5" height="5.5" rx="1.5" stroke="currentColor" strokeWidth="2" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
