@@ -1,13 +1,11 @@
 /* ==========================================================================
    T&S Consulting Group - Modern Dark Capsule Header (Reference Layout)
    ========================================================================== */
-
 :root {
   --header-bg-dark: #08080A;
   --header-capsule-bg: #141416;
-  --header-active-pill: #004D9C;
-  /* T&S Brand Blue - NO RED */
-  --header-primary-blue: #004D9C;
+  --header-active-pill: #0f62fe;
+  --header-primary-blue: #0f62fe;
   --header-white: #FFFFFF;
 }
 
@@ -239,7 +237,7 @@ header.orynex-header-container.is-sticky .orynex-header-bar {
 }
 
 .orynex-dropdown-item:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(15, 98, 254, 0.08);
 }
 
 .dropdown-item-icon {
@@ -261,6 +259,11 @@ header.orynex-header-container.is-sticky .orynex-header-bar {
   font-size: 14px;
   font-weight: 600;
   margin: 0 0 3px;
+  transition: color 0.2s ease;
+}
+
+.orynex-dropdown-item:hover h6 {
+  color: #0f62fe;
 }
 
 .orynex-dropdown-item p {
@@ -289,8 +292,8 @@ header.orynex-header-container.is-sticky .orynex-header-bar {
 }
 
 .orynex-dropdown-subitem:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #FFFFFF;
+  background: rgba(15, 98, 254, 0.08);
+  color: #0f62fe;
 }
 
 /* Right: Actions */
