@@ -178,7 +178,7 @@ header.orynex-header-container.is-sticky .orynex-header-bar {
 
 /* Active Pill Highlight - Brand Blue (#004D9C), NO RED */
 .orynex-nav-item.active {
-  background: var(--header-active-pill) !important;
+  background: #0f62fe;
   color: #FFFFFF !important;
   font-weight: 600;
 

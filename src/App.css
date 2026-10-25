@@ -386,4 +386,133 @@ body {
   }
 }
 
+/* ==========================================================================
+   Section Headers (Title-Area-Between) Perfect Alignment
+   ========================================================================== */
+.title-area-between {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  gap: 32px !important;
+  margin-bottom: 40px !important;
+}
+
+.title-area-between .title-left-wrapper {
+  flex: 1 1 auto !important;
+  max-width: 600px !important;
+}
+
+.title-area-between .title-left-wrapper span.pre {
+  display: inline-block !important;
+  padding: 5px 14px !important;
+  border: 1px solid #DBE7FF !important;
+  border-radius: 4px !important;
+  color: var(--color-primary, #0F62FE) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 1.5px !important;
+  line-height: 1.4 !important;
+  margin-bottom: 14px !important;
+  text-transform: uppercase !important;
+}
+
+.title-area-between .title-left-wrapper .title {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 46px !important;
+  font-weight: 700 !important;
+  line-height: 1.18 !important;
+  color: #050D20 !important;
+  letter-spacing: -1.2px !important;
+}
+
+/* Reset .right-area so paragraph and button are stacked vertically, not side-by-side */
+.rts-service-area .title-area-between .right-area,
+.title-area-between .right-area {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+  max-width: 490px !important;
+  flex: 0 1 490px !important;
+  gap: 16px !important;
+}
+
+.title-area-between .right-area p.disc {
+  font-size: 15.5px !important;
+  line-height: 1.75 !important;
+  color: #555555 !important;
+  margin: 0 !important;
+}
+
+.title-area-between .right-area a.btn-line {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 9px 22px !important;
+  border: 1.5px solid rgba(15, 98, 254, 0.25) !important;
+  border-radius: 100px !important;
+  background: #FFFFFF !important;
+  color: var(--color-primary, #0F62FE) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 2px 8px rgba(15, 98, 254, 0.06) !important;
+}
+
+.title-area-between .right-area a.btn-line i {
+  font-size: 12px !important;
+  transition: transform 0.25s ease !important;
+}
+
+.title-area-between .right-area a.btn-line:hover {
+  background: var(--color-primary, #0F62FE) !important;
+  color: #FFFFFF !important;
+  border-color: var(--color-primary, #0F62FE) !important;
+  box-shadow: 0 6px 18px rgba(15, 98, 254, 0.22) !important;
+  transform: translateY(-2px) !important;
+}
+
+.title-area-between .right-area a.btn-line:hover i {
+  transform: translateX(4px) !important;
+  color: #FFFFFF !important;
+}
+
+@media only screen and (max-width: 991px) {
+  .title-area-between {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .title-area-between .title-left-wrapper {
+    max-width: 100% !important;
+  }
+
+  .title-area-between .title-left-wrapper .title {
+    font-size: clamp(30px, 5.5vw, 38px) !important;
+    line-height: 1.25 !important;
+  }
+
+  .rts-service-area .title-area-between .right-area,
+  .title-area-between .right-area {
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+    gap: 14px !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .title-area-between .title-left-wrapper .title {
+    font-size: clamp(25px, 7vw, 30px) !important;
+  }
+
+  .title-area-between .right-area p.disc {
+    font-size: 14.5px !important;
+    line-height: 1.68 !important;
+  }
+}
+
 
