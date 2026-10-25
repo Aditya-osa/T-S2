@@ -14,7 +14,7 @@ const recruitmentSteps = [
         image:
             "assets/images/image copy.png",
         alt: "Recruitment team discussing hiring requirements",
-        layout: "step-high",
+        layout: "step-down",
     },
     {
         number: "02",
@@ -24,7 +24,7 @@ const recruitmentSteps = [
         image:
             "assets/images/image copy 2.png",
         alt: "Professionals collaborating on candidate sourcing",
-        layout: "step-low",
+        layout: "step-up",
     },
     {
         number: "03",
@@ -34,7 +34,7 @@ const recruitmentSteps = [
         image:
             "assets/images/image copy 3.png",
         alt: "Professional interview and candidate evaluation",
-        layout: "step-high",
+        layout: "step-down",
     },
     {
         number: "04",
@@ -44,7 +44,7 @@ const recruitmentSteps = [
         image:
             "assets/images/image copy 4.png",
         alt: "Welcoming new team member and joining handshake",
-        layout: "step-low",
+        layout: "step-up",
     },
 ];
 
@@ -93,7 +93,7 @@ function RecruitmentProcess() {
 
                 const pathLength = animTarget.getTotalLength();
 
-                // Compute exact curve length at column boundaries (x = 310, 600, 900)
+                // Compute exact curve length at column boundaries (x = 300, 600, 900)
                 const findLengthAtX = (targetX) => {
                     let low = 0;
                     let high = pathLength;
@@ -106,7 +106,7 @@ function RecruitmentProcess() {
                     return (low + high) / 2;
                 };
 
-                const len1 = findLengthAtX(310);
+                const len1 = findLengthAtX(300);
                 const len2 = findLengthAtX(600);
                 const len3 = findLengthAtX(900);
 
@@ -347,7 +347,7 @@ function RecruitmentProcess() {
                 <div className="process-flow-wrapper">
                     <svg
                         className="process-connecting-curve"
-                        viewBox="0 0 1200 420"
+                        viewBox="0 0 1200 480"
                         preserveAspectRatio="none"
                         aria-hidden="true"
                     >
@@ -355,7 +355,7 @@ function RecruitmentProcess() {
                             <mask id="recruitment-curve-mask">
                                 <path
                                     id="recruitment-mask-path"
-                                    d="M25 185 C145 240 180 285 310 295 S480 170 600 210 S800 320 900 305 S1080 225 1170 190"
+                                    d="M 25 150 C 65 158 100 179 141 179 C 240 179 345 326 447 326 C 550 326 650 179 753 179 C 855 179 955 326 1059 326 C 1110 326 1150 225 1175 175"
                                     stroke="#ffffff"
                                     strokeWidth="12"
                                     fill="none"
@@ -366,7 +366,7 @@ function RecruitmentProcess() {
                         <circle
                             className="curve-dot-start"
                             cx="25"
-                            cy="185"
+                            cy="150"
                             r="5"
                             fill="#ffffff"
                             stroke="#C39A4E"
@@ -376,7 +376,7 @@ function RecruitmentProcess() {
                         <path
                             id="recruitment-progress-path"
                             className="process-curve-path"
-                            d="M25 185 C145 240 180 285 310 295 S480 170 600 210 S800 320 900 305 S1080 225 1170 190"
+                            d="M 25 150 C 65 158 100 179 141 179 C 240 179 345 326 447 326 C 550 326 650 179 753 179 C 855 179 955 326 1059 326 C 1110 326 1150 225 1175 175"
                             stroke="#C39A4E"
                             strokeWidth="2"
                             strokeDasharray="5 8"
@@ -387,14 +387,14 @@ function RecruitmentProcess() {
                         <circle
                             className="curve-dot-mid"
                             cx="600"
-                            cy="210"
+                            cy="252"
                             r="5"
                             fill="#ffffff"
                             stroke="#1C3A5F"
                             strokeWidth="2"
                         />
 
-                        <g className="curve-arrow-end" transform="translate(1150 175) rotate(-25) scale(1)">
+                        <g className="curve-arrow-end" transform="translate(1160 160) rotate(-32) scale(1)">
                             <path
                                 d="M2 21L23 12L2 3L2 10L17 12L2 14L2 21Z"
                                 fill="#1C3A5F"
@@ -403,35 +403,68 @@ function RecruitmentProcess() {
                     </svg>
 
                     <div className="process-grid">
-                        {recruitmentSteps.map((step) => (
-                            <article
-                                className={`process-item ${step.layout}`}
-                                key={step.number}
-                            >
-                                <span className="step-number" aria-hidden="true">
-                                    {step.number}
-                                </span>
+                        {recruitmentSteps.map((step) => {
+                            const isContentUp = step.layout === "step-up";
 
-                                <div className="step-image-wrap">
-                                    <div className="step-image-ring">
-                                        <img
-                                            src={step.image}
-                                            alt={step.alt}
-                                            className="step-img"
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                </div>
+                            return (
+                                <article
+                                    className={`process-item ${step.layout}`}
+                                    key={step.number}
+                                >
+                                    {isContentUp ? (
+                                        <>
+                                            <div className="step-content">
+                                                <span className="step-label">
+                                                    STEP {step.number}
+                                                </span>
+                                                <h3 className="step-title">{step.title}</h3>
+                                                <p className="step-desc">{step.description}</p>
+                                            </div>
 
-                                <div className="step-content">
-                                    <span className="step-label">
-                                        STEP {step.number}
-                                    </span>
-                                    <h3 className="step-title">{step.title}</h3>
-                                    <p className="step-desc">{step.description}</p>
-                                </div>
-                            </article>
-                        ))}
+                                            <span className="step-number" aria-hidden="true">
+                                                {step.number}
+                                            </span>
+
+                                            <div className="step-image-wrap">
+                                                <div className="step-image-ring">
+                                                    <img
+                                                        src={step.image}
+                                                        alt={step.alt}
+                                                        className="step-img"
+                                                        loading="lazy"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span className="step-number" aria-hidden="true">
+                                                {step.number}
+                                            </span>
+
+                                            <div className="step-image-wrap">
+                                                <div className="step-image-ring">
+                                                    <img
+                                                        src={step.image}
+                                                        alt={step.alt}
+                                                        className="step-img"
+                                                        loading="lazy"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <div className="step-content">
+                                                <span className="step-label">
+                                                    STEP {step.number}
+                                                </span>
+                                                <h3 className="step-title">{step.title}</h3>
+                                                <p className="step-desc">{step.description}</p>
+                                            </div>
+                                        </>
+                                    )}
+                                </article>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

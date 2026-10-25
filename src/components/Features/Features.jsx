@@ -105,7 +105,7 @@ export default function Features() {
             </div>
 
             <h2 className="hr-heading">
-              Smarter HR. <br /> Stronger Organizations.
+              Smarter HR. <br className="hr-heading-br" /> Stronger Organizations.
             </h2>
 
             <p className="hr-description">

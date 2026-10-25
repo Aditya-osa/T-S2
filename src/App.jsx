@@ -55,11 +55,11 @@ export default function App() {
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       <main>
         <Hero onOpenVideo={(url) => setVideoUrl(url)} />
-        <About />
+        <About /> <Features />
         <Services />
         <RecruitmentProcess />
         <Projects />
-        <Features />
+
         <Training />
         <Industries />
         <Team />

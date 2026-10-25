@@ -235,18 +235,22 @@
 }
 
 /* ==========================================================================
-   Responsive Adaptations
+   Responsive Adaptations - All Screen Widths
    ========================================================================== */
 
-/* Large Desktop */
+/* Large Desktop (1440px+) */
 @media (min-width: 1440px) {
+  .hr-content-panel {
+    padding: 130px clamp(40px, 4vw, 80px) 140px clamp(50px, 5vw, 100px);
+  }
+
   .hr-content-wrapper {
     max-width: 680px;
-    margin-left: 45px;
+    margin-left: clamp(25px, 3vw, 55px);
   }
 
   .hr-heading {
-    font-size: 56px;
+    font-size: clamp(48px, 3.8vw, 56px);
     letter-spacing: -1.8px;
   }
 
@@ -255,35 +259,44 @@
   }
 }
 
-/* Tablet Landscape (992px - 1199px) */
+/* Tablet Landscape / Small Desktop (992px - 1199px) */
 @media (max-width: 1199px) and (min-width: 992px) {
   .hr-split-grid {
     grid-template-columns: 45% 55%;
   }
 
   .hr-content-panel {
-    padding: 100px 35px 100px 45px;
+    padding: 95px 30px 95px 40px;
   }
 
   .hr-content-wrapper {
-    margin-left: 15px;
+    margin-left: 10px;
   }
 
   .hr-heading {
-    font-size: 42px;
+    font-size: clamp(36px, 3.6vw, 42px);
     letter-spacing: -1.2px;
+  }
+
+  .hr-capabilities-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 18px;
+  }
+
+  .hr-capability-text {
+    font-size: 14px;
   }
 }
 
 /* Tablet Portrait (769px - 991px) */
 @media (max-width: 991px) and (min-width: 769px) {
   .hr-split-grid {
-    grid-template-columns: 45% 55%;
+    grid-template-columns: 42% 58%;
   }
 
   .hr-content-panel {
-    padding: 85px 25px 85px 35px;
-    min-height: 110vh;
+    padding: 75px 24px 75px 32px;
+    min-height: 105vh;
   }
 
   .hr-content-wrapper {
@@ -291,25 +304,35 @@
   }
 
   .hr-heading {
-    font-size: 38px;
-    letter-spacing: -1px;
+    font-size: clamp(30px, 3.8vw, 36px);
+    letter-spacing: -0.8px;
     margin-bottom: 20px;
   }
 
   .hr-description {
-    font-size: 15px;
-    line-height: 1.78;
-    margin-bottom: 30px;
+    font-size: 14.5px;
+    line-height: 1.72;
+    margin-bottom: 26px;
   }
 
   .hr-capabilities-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
-    margin-bottom: 36px;
+    gap: 12px;
+    margin-bottom: 30px;
+    padding: 20px 0;
+  }
+
+  .hr-actions {
+    gap: 12px;
+  }
+
+  .hr-actions .rts-btn {
+    padding: 13px 22px;
+    font-size: 14px;
   }
 }
 
-/* Mobile Devices (Stacked Layout, Sticky Disabled) */
+/* Mobile & Phablet (Stacked Layout, Sticky Disabled <= 768px) */
 @media (max-width: 768px) {
   .hr-split-grid {
     grid-template-columns: 1fr;
@@ -317,7 +340,7 @@
   }
 
   .hr-content-panel {
-    padding: 75px 24px 60px;
+    padding: clamp(60px, 8vw, 75px) clamp(20px, 5vw, 24px) 50px;
     min-height: auto;
     justify-content: flex-start;
     order: 1; /* Content first on mobile */
@@ -343,10 +366,11 @@
   }
 
   .hr-heading {
-    font-size: 34px;
-    letter-spacing: -0.8px;
+    font-size: clamp(28px, 6.5vw, 34px);
+    letter-spacing: -0.6px;
     line-height: 1.22;
     margin-bottom: 18px;
+    word-break: break-word;
   }
 
   .hr-description {
@@ -356,7 +380,7 @@
   }
 
   .hr-capabilities-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 14px;
     margin-bottom: 34px;
     padding: 20px 0;
@@ -365,7 +389,7 @@
   .hr-actions {
     flex-direction: column;
     width: 100%;
-    gap: 14px;
+    gap: 12px;
   }
 
   .hr-actions .rts-btn {
@@ -376,8 +400,8 @@
   }
 
   .hr-image-panel {
-    height: 380px;
-    min-height: 380px;
+    height: clamp(280px, 48vw, 380px);
+    min-height: 260px;
     order: 2;
   }
 
@@ -392,6 +416,79 @@
     top: 0 !important;
     height: 100% !important;
     transform: none !important;
+  }
+}
+
+/* Small Mobile (<= 480px) */
+@media (max-width: 480px) {
+  .hr-heading-br {
+    display: none;
+  }
+
+  .hr-content-panel {
+    padding: 50px 18px 45px;
+  }
+
+  .hr-heading {
+    font-size: clamp(25px, 7vw, 29px);
+    letter-spacing: -0.4px;
+  }
+
+  .hr-description {
+    font-size: 14px;
+    line-height: 1.68;
+    margin-bottom: 22px;
+  }
+
+  .hr-capabilities-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 26px;
+    padding: 16px 0;
+  }
+
+  .hr-capability-text {
+    font-size: 13.5px;
+  }
+
+  .hr-actions .rts-btn {
+    padding: 13px 20px;
+    font-size: 14px;
+  }
+
+  .hr-image-panel {
+    height: 270px;
+    min-height: 250px;
+  }
+}
+
+/* Extra Small Mobile (<= 360px - e.g. iPhone SE, Fold) */
+@media (max-width: 360px) {
+  .hr-content-panel {
+    padding: 45px 14px 40px;
+  }
+
+  .hr-heading {
+    font-size: 23px;
+    letter-spacing: -0.3px;
+  }
+
+  .hr-description {
+    font-size: 13.5px;
+  }
+
+  .hr-capability-text {
+    font-size: 13px;
+  }
+
+  .hr-actions .rts-btn {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .hr-image-panel {
+    height: 230px;
+    min-height: 220px;
   }
 }
 
